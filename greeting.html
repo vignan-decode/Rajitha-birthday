@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Special Message 💌</title>
+
+<style>
+
+body{
+    font-family: Georgia, serif;
+    background:#fff8f0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    margin:0;
+}
+
+.card{
+    background:white;
+    width:80%;
+    max-width:800px;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+h1{
+    color:#d63384;
+}
+
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+.message-btn{
+    background:#ff69b4;
+    color:white;
+}
+
+.gift-btn{
+    background:#28a745;
+    color:white;
+    display:none;
+}
+
+#messageText{
+    text-align:left;
+    margin-top:25px;
+    line-height:1.8;
+    font-size:20px;
+    white-space:pre-wrap;
+}
+
+.cursor{
+    animation: blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>💌 A Special Message For Rajitha</h1>
+
+    <p>
+        Before opening your gift, there is something special waiting for you...
+    </p>
+
+    <button class="message-btn" onclick="playMessage()">
+        See Message ❤️
+    </button>
+
+    <div id="messageText"></div>
+
+    <button
+        id="giftButton"
+        class="gift-btn"
+        onclick="window.location.href='gift.html'">
+        🎁 Open My Gift
+    </button>
+
+</div>
+
+<script>
+
+function playMessage(){
+
+    document.querySelector(".message-btn").style.display="none";
+
+    const fullMessage = `My Dear Rajitha,
+
+Today is a beautiful reminder that you are wonderfully made and deeply loved.
+
+You are not here by accident.
+
+God created you with purpose, filled your heart with kindness, and blessed you with a light that touches the lives of those around you.
+
+May this new year of your life be filled with God's favor, wisdom, strength, and peace.
+
+May your heart always find comfort in His promises and your life reflect His love.
+
+Remember that you are cherished, chosen, and precious in His sight.
+
+""She is clothed with strength and dignity; she can laugh at the days to come."
+— Proverbs 31:25
+
+✨ A Special Blessing For You from jesus✨
+
+My dear Rajitha,
+
+Wherever life takes you, never forget that you are deeply loved, wonderfully created, and never alone.
+
+your days be filled with courage when challenges arise, peace when worries appear, and joy that comes from knowing that i walk   beside you.
+
+May your faith remain strong, your heart remain kind, and your future be brighter than you can imagine.
+
+Trust me with all your heart, and i will guide your steps.
+
+When you feel weak, My strength carry you.
+When you feel uncertain, My wisdom lead you.
+When you feel afraid, My presence comfort you.
+
+I will bless your dreams, protect your journey, and surround you with My endless grace.
+
+your my best daughter till end  Follow me always, I will lead your way
+
+Have faith, keep smiling, and continue shining your light wherever you go.
+
+With love and blessings,
+
+Your Heavenly Father 
+
+Happy 23rd Birthday Rajitha 
+
+    const messageBox = document.getElementById("messageText");
+
+    let speech = new SpeechSynthesisUtterance(fullMessage);
+
+    speech.rate = 0.85;
+    speech.pitch = 1;
+
+    speech.onend = function(){
+        document.getElementById("giftButton").style.display="inline-block";
+    };
+
+    speechSynthesis.speak(speech);
+
+    let i = 0;
+
+    function typeWriter(){
+
+        if(i < fullMessage.length){
+
+            messageBox.innerHTML =
+                fullMessage.substring(0,i+1) +
+                '<span class="cursor">|</span>';
+
+            i++;
+
+            setTimeout(typeWriter,50);
+
+        }
+        else{
+
+            messageBox.innerHTML = fullMessage;
+
+        }
+    }
+
+    typeWriter();
+}
+
+</script>
+
+</body>
+</html>
+```
